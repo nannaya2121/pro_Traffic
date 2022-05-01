@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+ <br>
+    <form action="/admin/gugunInsert" method="post" id="gugunInsertForm">
+        <select name="outer_city_name" id="outer_city_name">
+            <option th:each="cityList : ${cityList}">[[${cityList.city_name}]]</option>
+        </select>
+        <input type="text" name="gugun_name" id="gugun_name">
+        <input type="text" name="gugun_value" id="gugun_value">
+        <input type="button" id="gugunBtn" value="입력하기">
+    </form>
+
+<script src="../js/admin.js"></script>
+</body>
+</html>
