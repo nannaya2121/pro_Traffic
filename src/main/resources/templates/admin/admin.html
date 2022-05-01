@@ -19,5 +19,18 @@
     </form>
 
 <script src="../js/admin.js"></script>
+<script th:inline="javascript" type="text/javascript">
+	
+	/*<![CDATA[*/
+
+    var msg = /*[[${msg}]]*/ 'default';
+    
+    if(msg == 'Success'){
+    	alert('등록성공');
+    }
+
+	/*]]>*/
+	
+</script>
 </body>
 </html>

@@ -18,28 +18,27 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired(required = true)
-    private CityService cityService;
-
-    @Autowired
-    private GugunService gugunService;
-
-    @GetMapping("/admin")
-    public String admin(Model model) {
-        System.out.println("admin Access Success");
-
-        List<CityDTO> list = cityService.cityFindAll();
-        model.addAttribute("cityList", list);
-        System.out.println(list.toString());
-        return "admin/admin";
-    }
-
-    @PostMapping("/gugunInsert")
-    public String gugunInsert(GugunDTO dto, RedirectAttributes rttr) {
-        System.out.println("dto : " + dto.toString());
-        gugunService.gugunInsert(dto);
-        rttr.addFlashAttribute("msg", "Success");
-        return "redirect:admin/admin";
-    }
+//    @Autowired
+//    private CityService cityService;
+//
+//    @Autowired
+//    private GugunService gugunService;
+//
+//    @GetMapping("/admin")
+//    public String admin(Model model) {
+//        System.out.println("admin Access Success");
+//
+//        List<CityDTO> list = cityService.cityFindAll();
+//        model.addAttribute("cityList", list);
+//        return "admin/admin";
+//    }
+//
+//    @PostMapping("/gugunInsert")
+//    public String gugunInsert(GugunDTO dto, RedirectAttributes rttr) {
+//        System.out.println("dto : " + dto.toString());
+//        gugunService.gugunInsert(dto);
+//        rttr.addFlashAttribute("msg", "Success");
+//        return "redirect:/admin/admin";
+//    }
 
 }

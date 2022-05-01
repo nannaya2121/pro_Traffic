@@ -5,9 +5,36 @@
 
 <mapper namespace="org.go.traffic.mapper.GugunMapper">
 
+<resultMap type="org.go.traffic.model.CityDTO" id="cityResultMap">
+	<id property="city_no" column="city_no" javaType="int"/>
+    <result column="city_name" property="city_name"/>
+    <result column="city_value" property="city_value"/>
+</resultMap>
+
+<resultMap type="org.go.traffic.model.GugunDTO" id="gugunResultMap">
+	<id property="gugun_no" column="gugun_no" javaType="int"/>
+    <result column="outer_city_name" property="outer_city_name"/>
+    <result column="gugun_name" property="gugun_name"/>
+    <result column="gugun_value" property="gugun_value"/>
+    <collection property="outer_city_name" resultMap="cityResultMap"/>
+</resultMap>
+
     <insert id="gugunInsert">
         INSERT INTO guguntbl (outer_city_name, gugun_name, gugun_value)
-        values (#{outer_city_name}, #{gugun_name}, #{gugun_value})
+        VALUES (#{outer_city_name}, #{gugun_name}, #{gugun_value})
     </insert>
+    
+    <select id="findAllGugun" resultType="org.go.traffic.model.GugunDTO">
+    	SELECT * FROM guguntbl
+    </select>
+    
+    <select id="gugunOneList" parameterType="String" resultMap="gugunResultMap">
+    	SELECT g.gugun_name , g.gugun_value from guguntbl as g 
+		INNER JOIN citytbl as c  
+		ON c.city_name = g.outer_city_name 
+		where c.city_value = #{city_value}
+    </select>
+
+    
 
 </mapper>
