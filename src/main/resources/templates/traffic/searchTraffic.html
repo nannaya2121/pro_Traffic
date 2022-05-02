@@ -9,16 +9,24 @@
 <div id="resultBox">
 
 </div>
-조회 연도 : <input type="number" min="2012" max="2020" id="searchYear"> <br>
-조회 지역 : <select id="city" onchange="changeCity()">
-				<option>도시를 선택해주세요</option>
+조회 연도 : <select id="searchYear"> 
+			<option value="-1">연도를 선택해주세요</option>
+			<option>2012</option>
+			<option>2013</option>
+			<option>2014</option>
+			<option>2015</option>
+			<option>2016</option>
+			<option>2017</option>
+			<option>2018</option>
+			<option>2019</option>
+			<option>2020</option>
+		</select><br>
+조회 지역 : <select id="city" onchange="changeCity(this.value);">
+				<option value="-1">도시를 선택해주세요</option>
         		<option th:each="cityList : ${cityList}" id="cityListValue"
         		th:value="${cityList.city_value}">[[${cityList.city_name}]]</option>
     		</select><br>
-상세지역 : <select id="gugun">
-        		<option th:each="gugunOneList : ${gugunOneList}" 
-        		th:value="${gugunOneList.gugun_value}">[[${gugunOneList.gugun_name}]]</option>
-    		</select><br>
+상세지역 : <select id="gugun"></select><br>
 <button id="searchBtn"> 검색 </button>
 
 <div id="testBox">
