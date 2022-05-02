@@ -1,28 +1,15 @@
 
 $(function() {
+
     var testBox = $('#testBox');
+    var resultBox = $('#resultBox');
     $('#searchBtn').click(function(){
-	var searchYear = $('#searchYear').val();
-	var city_value = $('#city').val();
-	
-	
-	$.ajax({
-            url: '/traffic/gugunSearchList',
-            type: "POST", 
-			data: {city_value:city_value},
-            success: function(data) {
-				$(data).each(function(){
-					console.log(this.gugun_name + '\n');
-				})
-                
-            }
-        });
-	
-	
-	
-	
-	console.log('searchYear 값 : ' + searchYear
-				+ '\n city_value 값 : ' + city_value);
+		var searchYear = $('#searchYear').val();
+		var city_value = $('#city').val();
+		
+		
+		console.log('searchYear 값 : ' + searchYear
+					+ '\n city_value 값 : ' + city_value);
 	
 	
        	/*testBox.html('');
@@ -54,3 +41,22 @@ $(function() {
         });*/
     });
 });
+
+function changeCity(){
+	
+	var cityListValue = $('#cityListValue').val();
+	alert(cityListValue);
+	
+	console.log('e 값 확인 : ' + cityListValue + '\n');
+		$.ajax({
+		url: '/traffic/gugunSearchList',
+		type: "POST", 
+		data: {city_value:cityListValue},
+		success: function(data) {
+			$(data).each(function(){
+				console.log(this.gugun_name + '\n');
+			});
+        }
+    });
+}
+

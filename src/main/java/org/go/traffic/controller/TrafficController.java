@@ -39,10 +39,11 @@ public class TrafficController {
     
     @PostMapping("/gugunSearchList")
     @ResponseBody
-    public List<GugunDTO> gugunSearchList(@RequestParam("city_value") String city_value){
+    public List<GugunDTO> gugunSearchList(@RequestParam("city_value") String city_value, Model model){
     	
     	List<GugunDTO> gugunOneList = gugunService.gugunOneList(city_value);
     	System.out.println(gugunOneList.toString());
+    	model.addAttribute("gugunOneList",gugunOneList);
     	return gugunOneList;
     }
 

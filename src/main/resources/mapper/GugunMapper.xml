@@ -16,21 +16,21 @@
     <result column="outer_city_name" property="outer_city_name"/>
     <result column="gugun_name" property="gugun_name"/>
     <result column="gugun_value" property="gugun_value"/>
-    <collection property="outer_city_name" resultMap="cityResultMap"/>
+    <collection property="cityDTO" resultMap="cityResultMap"/>
 </resultMap>
 
     <insert id="gugunInsert">
-        INSERT INTO guguntbl (outer_city_name, gugun_name, gugun_value)
+        INSERT INTO gugunTBL (outer_city_name, gugun_name, gugun_value)
         VALUES (#{outer_city_name}, #{gugun_name}, #{gugun_value})
     </insert>
     
     <select id="findAllGugun" resultType="org.go.traffic.model.GugunDTO">
-    	SELECT * FROM guguntbl
+    	SELECT * FROM gugunTBL
     </select>
     
     <select id="gugunOneList" parameterType="String" resultMap="gugunResultMap">
-    	SELECT g.gugun_name , g.gugun_value from guguntbl as g 
-		INNER JOIN citytbl as c  
+    	SELECT c.city_name, g.gugun_name , g.gugun_value from gugunTBL as g 
+		INNER JOIN cityTBL as c  
 		ON c.city_name = g.outer_city_name 
 		where c.city_value = #{city_value}
     </select>

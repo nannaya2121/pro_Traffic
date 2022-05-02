@@ -6,13 +6,19 @@
 </head>
 <body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-ddd <br>
+<div id="resultBox">
+
+</div>
 조회 연도 : <input type="number" min="2012" max="2020" id="searchYear"> <br>
-조회 지역 : <select id="city">
-        		<option th:each="cityList : ${cityList}" 
+조회 지역 : <select id="city" onchange="changeCity()">
+				<option>도시를 선택해주세요</option>
+        		<option th:each="cityList : ${cityList}" id="cityListValue"
         		th:value="${cityList.city_value}">[[${cityList.city_name}]]</option>
     		</select><br>
-   
+상세지역 : <select id="gugun">
+        		<option th:each="gugunOneList : ${gugunOneList}" 
+        		th:value="${gugunOneList.gugun_value}">[[${gugunOneList.gugun_name}]]</option>
+    		</select><br>
 <button id="searchBtn"> 검색 </button>
 
 <div id="testBox">

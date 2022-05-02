@@ -9,5 +9,7 @@ public class GugunDTO {
     private String outer_city_name;
     private String gugun_name;
     private String gugun_value;
+    
+    private CityDTO cityDTO;
 
 }
