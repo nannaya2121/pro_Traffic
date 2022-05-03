@@ -28,8 +28,31 @@ $(function() {
 
 
 		testBox.html('');
+		
+		$.ajax({
+			url: '/traffic/moveData',
+			type: "POST",
+			data:{
+				searchYear : searchYear,
+				city_value : city_value,
+				gugun_value  :gugun_value
+			},
+			success: function(data) {
+			console.log('data 값 : ' + data.resultCode);
+				var testObj = '<div>'
+				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
+				$(data.items.item).each(function() {
+					testObj += dateFormatter(this.occrrnc_dt) + '&emsp; <a href="#">상세보기</a>';
+					testObj += '위도 좌표 : ' + this.la_crd + ' ||| 경도 좌표 : ' + this.lo_crd + '<br></div>';
+				});
+				testBox.append(testObj);
+			}
+		});
+		
+		
+		
 
-		var url = 'http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath';
+/*		var url = 'http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath';
 		var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + 'cfWiR1HunYkkDf7oGcdyeFa0nJA7C4sFUKo9AEZIEaFLXyZirmI%2BeKZf2s7BDV8VaLwGZB%2Bstjl%2B7hx%2BJJ%2Fb0Q%3D%3D';
 		queryParams += '&' + encodeURIComponent('searchYear') + '=' + encodeURIComponent(searchYear);
 		queryParams += '&' + encodeURIComponent('siDo') + '=' + encodeURIComponent(city_value);
@@ -46,8 +69,8 @@ $(function() {
 			type: "GET",
 			success: function(data) {
 
-				/*총 결과 개수
-				alert(Object.keys(data.items.item).length);*/
+				총 결과 개수
+				alert(Object.keys(data.items.item).length);
 				var testObj = '<div>'
 				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
 				$(data.items.item).each(function() {
@@ -56,7 +79,11 @@ $(function() {
 				});
 				testBox.append(testObj);
 			}
-		});
+		});*/
+		
+		
+		
+		
 	});
 });
 
