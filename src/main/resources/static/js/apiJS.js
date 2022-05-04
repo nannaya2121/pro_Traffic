@@ -2,7 +2,11 @@ $(function() {
 
 
 	var testBox = $('#testBox');
+	
+	
+	
 	$('#searchBtn').click(function() {
+		
 		var searchYear = $('#searchYear').val();
 		var city_value = $('#city').val();
 		var gugun_value = $('#gugun').val();
@@ -29,6 +33,15 @@ $(function() {
 
 		testBox.html('');
 		
+		
+		var detailSearchYear = $('#detailSearchYear');
+		var detailCityValue = $('#detailCityValue');
+		var detailGugunValue = $('#detailGugunValue');
+		
+		
+		
+		
+		
 		$.ajax({
 			url: '/traffic/moveData',
 			type: "POST",
@@ -38,13 +51,31 @@ $(function() {
 				gugun_value  :gugun_value
 			},
 			success: function(data) {
+			detailSearchYear.val(searchYear);
+			detailCityValue.val(city_value);
+			detailGugunValue.val(gugun_value);
 			console.log('data 값 : ' + data.resultCode);
 				var testObj = '<div>'
 				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
-				$(data.items.item).each(function() {
-					testObj += dateFormatter(this.occrrnc_dt) + '&emsp; <a href="#">상세보기</a>';
-					testObj += '위도 좌표 : ' + this.la_crd + ' ||| 경도 좌표 : ' + this.lo_crd + '<br></div>';
-				});
+				
+				for(var i = 1; i < Object.keys(data.items.item).length; i++){
+					console.log('i값 확인 : '+JSON.stringify(data.items.item[i]));
+					//console.log('new값 확인 : '+JSON.stringify(Object.values(data.items.item[i])));
+					
+					testObj += '<input type="text" id="jsonOne_'+i+'" value='+ JSON.stringify(data.items.item[i])+'>';
+					testObj += '<span>'+(i)+'</span> &emsp;';
+					testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
+					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+'"jsonOne_'+i+'"'+')>상세보기</a><br>';
+				}
+				
+				
+				
+				/*$(data.items.item).each(function(index, test) {
+					console.log(test);
+					testObj += '<span>'+(index+1)+'</span> &emsp;';
+					testObj += dateFormatter(this.occrrnc_dt) 
+					+ '&emsp; <a href="javascript:void(0)" onClick="accidentDetail()">상세보기</a><br>';
+				});*/
 				testBox.append(testObj);
 			}
 		});
@@ -89,7 +120,7 @@ $(function() {
 
 function changeCity(city_value) {
 	var gugun = $('#gugun');
-	var optionTag = '<option value="-1">상세지역 선택</option>';
+	var optionTag = '<option value="-1">지역을 선택해주세요</option>';
 
 	console.log('cityListValue 값 확인 : ' + city_value + '\n');
 	$.ajax({
@@ -123,5 +154,14 @@ function dateFormatter(num) {
 		console.log(e);
 	}
 	return formatNum;
+}
+
+function accidentDetail(jsonOne){
+	
+	var test = $('#'+jsonOne).val();
+	console.log('test 값 확인 : ' + test);
+	var totalVal = $('#totalVal').val(JSON.stringify(test));
+	console.log('totalVal 값 확인 : ' + totalVal);
+	//$('#trafficDetailForm').submit();
 }
 

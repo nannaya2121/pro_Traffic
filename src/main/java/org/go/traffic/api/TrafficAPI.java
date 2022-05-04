@@ -4,13 +4,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
 
 public class TrafficAPI {
 	
-	public static StringBuilder apiCall(String searchYear, String city_value, String gugun_value) throws IOException {
+	public static JSONObject apiCall(String searchYear, String city_value, String gugun_value) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=cfWiR1HunYkkDf7oGcdyeFa0nJA7C4sFUKo9AEZIEaFLXyZirmI%2BeKZf2s7BDV8VaLwGZB%2Bstjl%2B7hx%2BJJ%2Fb0Q%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("searchYear","UTF-8") + "=" + URLEncoder.encode(searchYear, "UTF-8")); /*조회하고자 하는 연도값 입력(값 없을시 공백리턴)*/
@@ -39,7 +44,17 @@ public class TrafficAPI {
         conn.disconnect();
         System.out.println(sb.toString());
         
-        return sb;
+       String jsonStr=sb.toString();//sb는 StringBuilder 객체. API의response를 통해 값을 받은 상태. 
+		JSONParser parser = new JSONParser();
+		Object obj;
+		try {
+			obj = parser.parse(jsonStr);
+			JSONObject jsonObj = (JSONObject) obj;
+			return jsonObj;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
