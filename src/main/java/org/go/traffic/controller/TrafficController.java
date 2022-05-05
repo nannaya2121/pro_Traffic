@@ -8,6 +8,8 @@ import org.go.traffic.model.GugunDTO;
 import org.go.traffic.service.CityService;
 import org.go.traffic.service.GugunService;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,14 +73,33 @@ public class TrafficController {
     public String accidentDetailPage(@RequestParam("detailSearchYear") String detailSearchYear,
     		@RequestParam("detailCityValue") String detailCityValue,
     		@RequestParam("detailGugunValue") String detailGugunValue,
-    		@RequestParam("totalVal") Object totalVal){
+    		@RequestParam("totalVal") String totalVal){
     	
     	System.out.println("detailSearchYear 값 확인 : " + detailSearchYear);
     	System.out.println("detailCityValue 값 확인 : " + detailCityValue);
     	System.out.println("detailGugunValue 값 확인 : " + detailGugunValue);
     	System.out.println("totalVal 값 확인 : " + totalVal);
-    	JSONObject jsonObj = (JSONObject) totalVal;
-    	System.out.println(jsonObj.toJSONString());
+    	
+    	JSONParser jsonParser = new JSONParser();
+        
+        //3. To Object
+        Object obj;
+		try {
+			obj = jsonParser.parse(totalVal);
+	        JSONObject jsonObj = (JSONObject) obj;
+	        System.out.println("json으로 변환된 값 확인 : " + jsonObj);
+	        
+	        
+	        String occrrnc_dt = (String) jsonObj.get("occrrnc_dt");
+	        
+	        System.out.println("occrrnc_dt 키 값 확인 : " + occrrnc_dt);
+	        
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+        
+        
+    	
     	
     	
     	return "traffic/accidentDetail";

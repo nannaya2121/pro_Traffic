@@ -51,6 +51,8 @@ $(function() {
 				gugun_value  :gugun_value
 			},
 			success: function(data) {
+				
+				
 			detailSearchYear.val(searchYear);
 			detailCityValue.val(city_value);
 			detailGugunValue.val(gugun_value);
@@ -59,60 +61,25 @@ $(function() {
 				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
 				
 				for(var i = 1; i < Object.keys(data.items.item).length; i++){
-					console.log('i값 확인 : '+JSON.stringify(data.items.item[i]));
-					//console.log('new값 확인 : '+JSON.stringify(Object.values(data.items.item[i])));
+					var testStr = JSON.stringify(data.items.item[i]);
+					var reverseTest = JSON.parse(testStr.replace(/ /gi, "").replace(/&quot;/g, '"'));
+					//console.log('i값 확인 : '+testStr.replace(/\\n/g, '').replace(/&quot;/g, '"').replace(/ /gi, "").replace( /(s*)/g, "" ));
+					console.log('p값 확인 : '+ JSON.stringify(reverseTest));
 					
-					testObj += '<input type="text" id="jsonOne_'+i+'" value='+ JSON.stringify(data.items.item[i])+'>';
+					
+					testObj += '<input type="text" id="jsonOne_'+i+'" value='+ JSON.stringify(reverseTest)+'>';
 					testObj += '<span>'+(i)+'</span> &emsp;';
+					/*testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
+					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+'"jsonOne_'+i+'".value'+')>상세보기</a><br>';*/
 					testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
-					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+'"jsonOne_'+i+'"'+')>상세보기</a><br>';
+					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+JSON.stringify(reverseTest)+')>상세보기</a><br>';
 				}
-				
-				
-				
-				/*$(data.items.item).each(function(index, test) {
-					console.log(test);
-					testObj += '<span>'+(index+1)+'</span> &emsp;';
-					testObj += dateFormatter(this.occrrnc_dt) 
-					+ '&emsp; <a href="javascript:void(0)" onClick="accidentDetail()">상세보기</a><br>';
-				});*/
+
 				testBox.append(testObj);
 			}
 		});
 		
-		
-		
 
-/*		var url = 'http://apis.data.go.kr/B552061/AccidentDeath/getRestTrafficAccidentDeath';
-		var queryParams = '?' + encodeURIComponent('serviceKey') + '=' + 'cfWiR1HunYkkDf7oGcdyeFa0nJA7C4sFUKo9AEZIEaFLXyZirmI%2BeKZf2s7BDV8VaLwGZB%2Bstjl%2B7hx%2BJJ%2Fb0Q%3D%3D';
-		queryParams += '&' + encodeURIComponent('searchYear') + '=' + encodeURIComponent(searchYear);
-		queryParams += '&' + encodeURIComponent('siDo') + '=' + encodeURIComponent(city_value);
-		queryParams += '&' + encodeURIComponent('guGun') + '=' + encodeURIComponent(gugun_value);
-		queryParams += '&' + encodeURIComponent('type') + '=' + encodeURIComponent('json');
-		queryParams += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('50');
-		queryParams += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1');
-
-		var totalURL = url + queryParams;
-		console.log('totalURL : ' + totalURL);
-
-		$.ajax({
-			url: totalURL,
-			type: "GET",
-			success: function(data) {
-
-				총 결과 개수
-				alert(Object.keys(data.items.item).length);
-				var testObj = '<div>'
-				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
-				$(data.items.item).each(function() {
-					testObj += dateFormatter(this.occrrnc_dt) + '&emsp; <a href="#">상세보기</a>';
-					testObj += '위도 좌표 : ' + this.la_crd + ' ||| 경도 좌표 : ' + this.lo_crd + '<br></div>';
-				});
-				testBox.append(testObj);
-			}
-		});*/
-		
-		
 		
 		
 	});
@@ -157,11 +124,11 @@ function dateFormatter(num) {
 }
 
 function accidentDetail(jsonOne){
-	
-	var test = $('#'+jsonOne).val();
-	console.log('test 값 확인 : ' + test);
-	var totalVal = $('#totalVal').val(JSON.stringify(test));
+	console.log('jsonOne 값 확인 : ' + JSON.stringify(jsonOne));
+	/*var test = $('#'+jsonOne).val();
+	console.log('test 값 확인 : ' + test);*/
+	var totalVal = $('#totalVal').val(JSON.stringify(jsonOne));
 	console.log('totalVal 값 확인 : ' + totalVal);
-	//$('#trafficDetailForm').submit();
+	$('#trafficDetailForm').submit();
 }
 
