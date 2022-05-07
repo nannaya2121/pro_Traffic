@@ -1,9 +1,6 @@
 $(function() {
-
-
+	
 	var testBox = $('#testBox');
-	
-	
 	
 	$('#searchBtn').click(function() {
 		
@@ -30,16 +27,7 @@ $(function() {
 			return;
 		}
 
-
 		testBox.html('');
-		
-		
-		var detailSearchYear = $('#detailSearchYear');
-		var detailCityValue = $('#detailCityValue');
-		var detailGugunValue = $('#detailGugunValue');
-		
-		
-		
 		
 		
 		$.ajax({
@@ -52,10 +40,9 @@ $(function() {
 			},
 			success: function(data) {
 				
-				
-			detailSearchYear.val(searchYear);
-			detailCityValue.val(city_value);
-			detailGugunValue.val(gugun_value);
+			$('#detailSidoValue').val(city_value);
+			$('#detailGugunValue').val(gugun_value);
+			
 			console.log('data 값 : ' + data.resultCode);
 				var testObj = '<div>'
 				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
@@ -63,14 +50,10 @@ $(function() {
 				for(var i = 1; i < Object.keys(data.items.item).length; i++){
 					var testStr = JSON.stringify(data.items.item[i]);
 					var reverseTest = JSON.parse(testStr.replace(/ /gi, "").replace(/&quot;/g, '"'));
-					//console.log('i값 확인 : '+testStr.replace(/\\n/g, '').replace(/&quot;/g, '"').replace(/ /gi, "").replace( /(s*)/g, "" ));
 					console.log('p값 확인 : '+ JSON.stringify(reverseTest));
 					
 					
-					testObj += '<input type="text" id="jsonOne_'+i+'" value='+ JSON.stringify(reverseTest)+'>';
 					testObj += '<span>'+(i)+'</span> &emsp;';
-					/*testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
-					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+'"jsonOne_'+i+'".value'+')>상세보기</a><br>';*/
 					testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
 					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+JSON.stringify(reverseTest)+')>상세보기</a><br>';
 				}
@@ -78,9 +61,6 @@ $(function() {
 				testBox.append(testObj);
 			}
 		});
-		
-
-		
 		
 	});
 });
@@ -125,8 +105,6 @@ function dateFormatter(num) {
 
 function accidentDetail(jsonOne){
 	console.log('jsonOne 값 확인 : ' + JSON.stringify(jsonOne));
-	/*var test = $('#'+jsonOne).val();
-	console.log('test 값 확인 : ' + test);*/
 	var totalVal = $('#totalVal').val(JSON.stringify(jsonOne));
 	console.log('totalVal 값 확인 : ' + totalVal);
 	$('#trafficDetailForm').submit();

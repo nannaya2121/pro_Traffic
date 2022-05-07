@@ -8,5 +8,9 @@
     <select id="cityFindAll" resultType="org.go.traffic.model.CityDTO">
         SELECT * FROM cityTBL
     </select>
+    
+    <select id="cityFindByValue" resultType="org.go.traffic.model.CityDTO">
+    	SELECT city_name FROM cityTBL WHERE city_value = #{city_value}
+    </select>
 
 </mapper>

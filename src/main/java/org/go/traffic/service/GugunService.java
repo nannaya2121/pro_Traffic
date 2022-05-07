@@ -12,4 +12,6 @@ public interface GugunService {
 
 	List<GugunDTO> gugunOneList(String city_value);
 
+	GugunDTO gugunFindByValue(String detailGugunValue);
+
 }
