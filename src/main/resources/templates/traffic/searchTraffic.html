@@ -2,45 +2,101 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>Search Accident</title>
+<link rel="stylesheet" href="../css/index_css.css">
+<link rel="stylesheet" href="../css/accidentSearch_css.css">
 </head>
 <body>
-
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<div id="resultBox">
+	
+	<div class="wrapper">
 
-</div>
-조회 연도 : <select id="searchYear"> 
-			<option value="-1">연도를 선택해주세요</option>
-			<option>2012</option>
-			<option>2013</option>
-			<option>2014</option>
-			<option>2015</option>
-			<option>2016</option>
-			<option>2017</option>
-			<option>2018</option>
-			<option>2019</option>
-			<option>2020</option>
-		</select><br>
-조회 지역 : <select id="city" onchange="changeCity(this.value);">
-				<option value="-1">도시를 선택해주세요</option>
-        		<option th:each="cityList : ${cityList}" id="cityListValue"
-        		th:value="${cityList.city_value}">[[${cityList.city_name}]]</option>
-    		</select><br>
-상세지역 : <select id="gugun"><option value="-1">지역을 선택해주세요</option></select><br>
-<button id="searchBtn"> 검색 </button> 
-<button onclick="location.href='/'"> 돌아가기 </button> 
+        <div class="main">
+            <nav class="main_nav">
+                <div class="logoWrapper">
+                    <div><a class="logo" href="/">로고들어올자리</a></div>
+                </div>
+                <div class="navContentWrapper">
+                    <div><a class="cctv" href="#">CCTV 보러가기</a></div>
+                    <div><a class="accident" href="/traffic/searchTraffic">지역별 사고현황</a></div>
+                    <div><a class="notice" href="#">공지사항</a></div>
+                </div>
+            </nav>
 
-<div id="testBox">
+			
+            
+            <div class="contentWrapper_accident">
+				<div class="searchBox">
 
-</div>
+					<div class="yearBox">
 
-<form action="/traffic/accidentDetail" method="post" id="trafficDetailForm">
-	<input type="hidden" name="detailSidoValue" id="detailSidoValue">
-	<input type="hidden" name="detailGugunValue" id="detailGugunValue">
-	<input type="hidden" name="totalVal" id="totalVal">
-</form>
+						<div>조회연도</div>
+
+						<select id="searchYear"> 
+							<option value="-1">연도를 선택해주세요</option>
+							<option>2020</option>
+							<option>2019</option>
+							<option>2018</option>
+							<option>2017</option>
+							<option>2016</option>
+							<option>2015</option>
+							<option>2014</option>
+							<option>2013</option>
+							<option>2012</option>
+						</select>
+
+					</div>
+
+					<div class="locationBox">
+
+						<div>조회 지역</div>
+
+						<select id="city" onchange="changeCity(this.value);">
+							<option value="-1">도시를 선택해주세요</option>
+							<option th:each="cityList : ${cityList}" id="cityListValue"
+							th:value="${cityList.city_value}">[[${cityList.city_name}]]</option>
+						</select>
+
+					</div>
+
+					<div class="innerlocationBox">
+
+						<div>상세지역</div>
+						 
+						<select id="gugun">
+							<option value="-1">지역을 선택해주세요</option>
+						</select>
+
+					</div>
+
+					<div class="buttonBox">
+
+						<button id="searchBtn">검색하기</button>
+
+					</div>
+
+				</div>
+
+				<div class="resultContent">
+
+					<div id="resultBox"></div>
+	
+				</div>
+
+        	</div>
+
+			
+			
+			
+        <div class="footer"></div>
+
+    </div>
+
+	<form action="/traffic/accidentDetail" method="post" id="trafficDetailForm">
+		<input type="hidden" name="detailSidoValue" id="detailSidoValue">
+		<input type="hidden" name="detailGugunValue" id="detailGugunValue">
+		<input type="hidden" name="totalVal" id="totalVal">
+	</form>
 
 <script src="../js/searchTraffic.js"></script>
 </body>

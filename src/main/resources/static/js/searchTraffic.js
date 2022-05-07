@@ -1,6 +1,6 @@
 $(function() {
 	
-	var testBox = $('#testBox');
+	var resultBox = $('#resultBox');
 	
 	$('#searchBtn').click(function() {
 		
@@ -27,7 +27,7 @@ $(function() {
 			return;
 		}
 
-		testBox.html('');
+		resultBox.html('');
 		
 		
 		$.ajax({
@@ -58,7 +58,7 @@ $(function() {
 					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+JSON.stringify(reverseTest)+')>상세보기</a><br>';
 				}
 
-				testBox.append(testObj);
+				resultBox.append(testObj);
 			}
 		});
 		
