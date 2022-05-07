@@ -57,7 +57,7 @@ function getAccidentPoint(){
 	var circle = L.circle([latitude, longitude], {
 	    color: 'red',
 	    fillColor: '#f03',
-	    fillOpacity: 0.5,
+	    fillOpacity: 0.3,
 	    radius: 25
 	}).addTo(map);
 	

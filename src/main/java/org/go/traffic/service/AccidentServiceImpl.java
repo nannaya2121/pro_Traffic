@@ -30,6 +30,26 @@ public class AccidentServiceImpl implements AccidentService{
 	        String dayOfWeek = (String) jsonObj.get("occrrnc_day_cd");
 	        Long deathCount = (Long) jsonObj.get("dth_dnv_cnt");
 	        Long injureCount = (Long) jsonObj.get("injpsn_cnt");
+	        String attackerCode = (String) jsonObj.get("aslt_vtr_cd");
+	        if(attackerCode.equals("01")) {
+	        	dto.setViolationName("과속");
+	        }else if(attackerCode.equals("02")) {
+	        	dto.setViolationName("중앙선 침범");
+	        }else if(attackerCode.equals("03")) {
+	        	dto.setViolationName("신호위반");
+	        }else if(attackerCode.equals("04")) {
+	        	dto.setViolationName("안전거리 미확보");
+	        }else if(attackerCode.equals("05")) {
+	        	dto.setViolationName("안전운전 의무 불이행");
+	        }else if(attackerCode.equals("06")) {
+	        	dto.setViolationName("교차로 통행방법 위반");
+	        }else if(attackerCode.equals("07")) {
+	        	dto.setViolationName("보행자 보호의무 위반");
+	        }else if(attackerCode.equals("99")) {
+	        	dto.setViolationName("기타");
+	        }
+	        
+	        
 	        String latitude = (String) jsonObj.get("la_crd");
 	        String longitude = (String) jsonObj.get("lo_crd");
 	        
@@ -37,6 +57,7 @@ public class AccidentServiceImpl implements AccidentService{
 	        System.out.println("dayOfWeek 키 값 확인 : " + dayOfWeek);
 	        System.out.println("deathCount 키 값 확인 : " + deathCount);
 	        System.out.println("injureCount 키 값 확인 : " + injureCount);
+	        System.out.println("attackerCode 키 값 확인 : " + attackerCode);
 	        System.out.println("latitude 키 값 확인 : " + latitude);
 	        System.out.println("longitude 키 값 확인 : " + longitude);
 	        

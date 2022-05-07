@@ -18,6 +18,9 @@ public class AccidentDTO {
 	//부상자수
 	private Long injureCount;
 	
+	//가해자 법규 위반 코드
+	private String violationName;
+	
 	//위도 좌표
 	private String latitude;
 	
