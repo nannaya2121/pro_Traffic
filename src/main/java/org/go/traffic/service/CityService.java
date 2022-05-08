@@ -7,5 +7,6 @@ import org.go.traffic.model.CityDTO;
 public interface CityService {
 
 	List<CityDTO> cityFindAll();
+	CityDTO cityFindByValue(String cityValue);
 
 }

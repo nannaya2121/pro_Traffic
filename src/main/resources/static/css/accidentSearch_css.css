@@ -1,0 +1,144 @@
+.contentWrapper_accident{
+    border: 1px solid red;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.searchBox{
+    width: 60%;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.resultContent{
+    width: 80%;
+    height: 80%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultContent::-webkit-scrollbar{
+    display: none;
+}
+
+.yearBox{
+    border: 1px solid white;
+    width: 25%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.locationBox{
+    border: 1px solid white;
+    width: 25%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerlocationBox{
+    border: 1px solid white;
+    width: 25%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonBox{
+    border: 1px solid white;
+    width: 15%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.totalInnerResultBox{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerResultTotalCount{
+    text-align: right;
+}
+
+.innerResultBox{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gatherSources{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.gatherSources:hover span{
+    font-weight: bolder;
+    background-color: aliceblue;
+    color: black;
+}
+
+.gatherSources:hover a{
+    font-weight: bolder;
+    background-color: aliceblue;
+    color: rgb(255, 2, 2);
+}
+
+.innerResultBoxNumbering{
+    width: 10%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.innerResultBoxDate{
+    width: 50%;
+    text-align: center;
+}
+
+.innerResultBoxDetail{
+    width: 20%;
+    color: rgb(152, 245, 21);
+    text-align: center;
+    text-decoration: none;
+}
+
+select{
+    color: white;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: bolder;
+    background-color: transparent;
+    
+    /* select 된 것만 가운데 정렬 */
+    text-align-last: center;
+}
+
+select option{
+    color: white;
+    background: rgba(0, 0, 0, 1);
+}
+

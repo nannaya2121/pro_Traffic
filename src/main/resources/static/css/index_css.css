@@ -1,0 +1,144 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.wrapper{
+    background-image: url('../images/indexBackground2.jpg');
+    width: 100%;
+    height: 800px;
+    background-repeat : no-repeat;
+    background-size : cover;
+}
+
+.main{
+    border: 1px solid red;
+    height: 90%;
+}
+
+.main_nav{
+    height: 10%;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoWrapper{
+    border: 1px solid yellow;
+    margin-left: 3%;
+}
+
+.logo{
+    color: white;
+    text-decoration: none;
+}
+
+.navContentWrapper{
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 5%;
+}
+
+
+
+.navContentWrapper div a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.cctv:hover{
+    color: rgb(2, 150, 255);
+}
+
+.accident:hover{
+    color: red;
+}
+
+.notice:hover{
+    color: rgb(255, 183, 0);
+}
+
+.contentWrapper{
+    border: 1px solid red;
+    height: 90%;
+    display: flex;
+}
+
+.leftContent{
+    border: 1px solid orange;
+    width: 50%;
+}
+
+.rightContent{
+    border: 1px solid rgb(47, 33, 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+}
+
+.smallContentWrapper0{
+    border: 1px solid rgb(224, 72, 11);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.smallContentWrapper1{
+    border: 1px solid rgb(224, 72, 11);
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.smallContentWrapper2{
+    border: 1px solid rgb(224, 72, 11);
+    display: flex;
+    width: 100%;
+    height: 50%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.small_content0{
+    border: 1px solid red;
+    width: 95%;
+    height: 95%;
+}
+
+.small_content1{
+    border: 1px solid red;
+    width: 45%;
+    height: 90%;
+}
+
+.small_content2{
+    border: 1px solid red;
+    width: 45%;
+    height: 90%;
+}
+
+.small_content3{
+    border: 1px solid red;
+    width: 45%;
+    height: 90%;
+}
+
+.small_content4{
+    border: 1px solid red;
+    width: 45%;
+    height: 90%;
+}
+
+.footer{
+    border: 1px solid blue;
+    height: 10%;
+}

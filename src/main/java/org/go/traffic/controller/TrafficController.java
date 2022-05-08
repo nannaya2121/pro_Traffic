@@ -1,15 +1,17 @@
 package org.go.traffic.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.go.traffic.api.TrafficAPI;
+import org.go.traffic.model.AccidentDTO;
 import org.go.traffic.model.CityDTO;
 import org.go.traffic.model.GugunDTO;
+import org.go.traffic.service.AccidentService;
 import org.go.traffic.service.CityService;
 import org.go.traffic.service.GugunService;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,9 @@ public class TrafficController {
 	
 	@Autowired
 	private GugunService gugunService;
+	
+	@Autowired
+	private AccidentService accidentService;
 	
 	@GetMapping("/searchTraffic")
 	public String test(Model model) {
@@ -70,37 +75,27 @@ public class TrafficController {
     }
     
     @PostMapping("/accidentDetail")
-    public String accidentDetailPage(@RequestParam("detailSearchYear") String detailSearchYear,
-    		@RequestParam("detailCityValue") String detailCityValue,
+    public String accidentDetailPage(@RequestParam("detailSidoValue") String detailSidoValue,
     		@RequestParam("detailGugunValue") String detailGugunValue,
-    		@RequestParam("totalVal") String totalVal){
+    		@RequestParam("totalVal") String totalVal,
+    		Model model){
+    	CityDTO cityName = cityService.cityFindByValue(detailSidoValue);
+    	GugunDTO gugunName = gugunService.gugunFindByValue(detailGugunValue);
     	
-    	System.out.println("detailSearchYear 값 확인 : " + detailSearchYear);
-    	System.out.println("detailCityValue 값 확인 : " + detailCityValue);
-    	System.out.println("detailGugunValue 값 확인 : " + detailGugunValue);
     	System.out.println("totalVal 값 확인 : " + totalVal);
     	
-    	JSONParser jsonParser = new JSONParser();
-        
-        //3. To Object
-        Object obj;
-		try {
-			obj = jsonParser.parse(totalVal);
-	        JSONObject jsonObj = (JSONObject) obj;
-	        System.out.println("json으로 변환된 값 확인 : " + jsonObj);
-	        
-	        
-	        String occrrnc_dt = (String) jsonObj.get("occrrnc_dt");
-	        
-	        System.out.println("occrrnc_dt 키 값 확인 : " + occrrnc_dt);
-	        
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-        
-        
+    	AccidentDTO dto = accidentService.tempSave(totalVal);
+    	System.out.println("DTO 값 확인 : " + dto.toString());
     	
+    	System.out.println("cityName 값 : " + cityName);
+    	System.out.println("gugunName 값 : " + gugunName);
     	
+    	Map<String, Object> names = new HashMap<>();
+    	names.put("cityName", cityName.getCity_name());
+    	names.put("gugunName", gugunName.getGugun_name());
+    	
+    	model.addAttribute("dto", dto);
+    	model.addAttribute("sidoGugunName", names);
     	
     	return "traffic/accidentDetail";
     }

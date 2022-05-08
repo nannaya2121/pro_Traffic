@@ -28,4 +28,9 @@ public class GugunServiceImple implements GugunService {
 		return mapper.gugunOneList(city_value);
 	}
 
+	@Override
+	public GugunDTO gugunFindByValue(String detailGugunValue) {
+		return mapper.gugunFindByValue(detailGugunValue);
+	}
+
 }

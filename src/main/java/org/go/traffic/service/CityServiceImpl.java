@@ -15,8 +15,12 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<CityDTO> cityFindAll() {
-    	System.out.println("in Impl");
         return mapper.cityFindAll();
     }
+
+	@Override
+	public CityDTO cityFindByValue(String cityValue) {
+		return mapper.cityFindByValue(cityValue);
+	}
 
 }

@@ -34,6 +34,10 @@
 		ON c.city_name = g.outer_city_name 
 		where c.city_value = #{city_value}
     </select>
+    
+    <select id="gugunFindByValue" resultType="org.go.traffic.model.GugunDTO">
+    	SELECT gugun_name FROM guguntbl WHERE gugun_value = #{gugun_value}
+    </select>
 
     
 

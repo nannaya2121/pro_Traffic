@@ -11,5 +11,6 @@ public interface GugunMapper {
     void gugunInsert(GugunDTO dto);
     List<GugunDTO> findAllGugun();
 	List<GugunDTO> gugunOneList(String city_value);
+	GugunDTO gugunFindByValue(String detailGugunValue);
 
 }

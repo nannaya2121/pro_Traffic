@@ -10,4 +10,6 @@ public interface CityMapper {
 
     List<CityDTO> cityFindAll();
 
+	CityDTO cityFindByValue(String cityValue);
+
 }

@@ -1,11 +1,14 @@
 $(function() {
-
-
-	var testBox = $('#testBox');
 	
-	
+	var innerResultBox = $('#innerResultBox');
+
+	// var innerResultBoxNumbering = $('#innerResultBoxNumbering');
+	// var innerResultBoxDate = $('#innerResultBoxDate');
+	// var innerResultBoxDetail = $('#innerResultBoxDetail');
 	
 	$('#searchBtn').click(function() {
+
+		
 		
 		var searchYear = $('#searchYear').val();
 		var city_value = $('#city').val();
@@ -30,18 +33,10 @@ $(function() {
 			return;
 		}
 
-
-		testBox.html('');
-		
-		
-		var detailSearchYear = $('#detailSearchYear');
-		var detailCityValue = $('#detailCityValue');
-		var detailGugunValue = $('#detailGugunValue');
-		
-		
-		
-		
-		
+		innerResultBox.html('');
+		// innerResultBoxNumbering.html('');
+		// innerResultBoxDate.html('');
+		// innerResultBoxDetail.html('');
 		$.ajax({
 			url: '/traffic/moveData',
 			type: "POST",
@@ -51,36 +46,41 @@ $(function() {
 				gugun_value  :gugun_value
 			},
 			success: function(data) {
+			
+			innerResultBox.css('border','1px solid rgb(0, 255, 115)');
 				
-				
-			detailSearchYear.val(searchYear);
-			detailCityValue.val(city_value);
-			detailGugunValue.val(gugun_value);
+			$('#detailSidoValue').val(city_value);
+			$('#detailGugunValue').val(gugun_value);
+			
 			console.log('data 값 : ' + data.resultCode);
-				var testObj = '<div>'
-				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
+
+				$('#innerResultTotalCount').html('<div>총 ' + Object.keys(data.items.item).length + '건 </div>');
 				
-				for(var i = 1; i < Object.keys(data.items.item).length; i++){
+				for(var i = 0; i < Object.keys(data.items.item).length; i++){
+
 					var testStr = JSON.stringify(data.items.item[i]);
 					var reverseTest = JSON.parse(testStr.replace(/ /gi, "").replace(/&quot;/g, '"'));
-					//console.log('i값 확인 : '+testStr.replace(/\\n/g, '').replace(/&quot;/g, '"').replace(/ /gi, "").replace( /(s*)/g, "" ));
-					console.log('p값 확인 : '+ JSON.stringify(reverseTest));
 					
-					
-					testObj += '<input type="text" id="jsonOne_'+i+'" value='+ JSON.stringify(reverseTest)+'>';
-					testObj += '<span>'+(i)+'</span> &emsp;';
-					/*testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
-					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+'"jsonOne_'+i+'".value'+')>상세보기</a><br>';*/
-					testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
-					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+JSON.stringify(reverseTest)+')>상세보기</a><br>';
+					var newTag = '<div class="gatherSources"> <span class="innerResultBoxNumbering">' + (i+1) + '</span>';
+
+					// var numberingTag = '<div>' + (i+1) + '</div>';
+					// innerResultBoxNumbering.append(numberingTag);
+
+					newTag += '<span class="innerResultBoxDate">' + dateFormatter(data.items.item[i].occrrnc_dt)  + '</span>';
+
+					// var dateTag = '<div>' + dateFormatter(data.items.item[i].occrrnc_dt)  + '</div>';
+					// innerResultBoxDate.append(dateTag);
+
+					newTag += '<a class="innerResultBoxDetail" href="javascript:void(0)" onClick=accidentDetail(' + 
+					JSON.stringify(reverseTest)  + ')> 상세보기 </a> </div> <br>';
+
+					// var detailTag = '<div> <a href="javascript:void(0)" onClick=accidentDetail(' + 
+					// JSON.stringify(reverseTest)  + ')> 상세보기 </a> </div>';
+					innerResultBox.append(newTag);
 				}
 
-				testBox.append(testObj);
-			}
+			} /*success구문 끝*/
 		});
-		
-
-		
 		
 	});
 });
@@ -125,8 +125,6 @@ function dateFormatter(num) {
 
 function accidentDetail(jsonOne){
 	console.log('jsonOne 값 확인 : ' + JSON.stringify(jsonOne));
-	/*var test = $('#'+jsonOne).val();
-	console.log('test 값 확인 : ' + test);*/
 	var totalVal = $('#totalVal').val(JSON.stringify(jsonOne));
 	console.log('totalVal 값 확인 : ' + totalVal);
 	$('#trafficDetailForm').submit();
