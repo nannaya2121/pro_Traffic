@@ -1,8 +1,14 @@
 $(function() {
 	
-	var resultBox = $('#resultBox');
+	var innerResultBox = $('#innerResultBox');
+
+	// var innerResultBoxNumbering = $('#innerResultBoxNumbering');
+	// var innerResultBoxDate = $('#innerResultBoxDate');
+	// var innerResultBoxDetail = $('#innerResultBoxDetail');
 	
 	$('#searchBtn').click(function() {
+
+		
 		
 		var searchYear = $('#searchYear').val();
 		var city_value = $('#city').val();
@@ -27,9 +33,10 @@ $(function() {
 			return;
 		}
 
-		resultBox.html('');
-		
-		
+		innerResultBox.html('');
+		// innerResultBoxNumbering.html('');
+		// innerResultBoxDate.html('');
+		// innerResultBoxDetail.html('');
 		$.ajax({
 			url: '/traffic/moveData',
 			type: "POST",
@@ -39,27 +46,40 @@ $(function() {
 				gugun_value  :gugun_value
 			},
 			success: function(data) {
+			
+			innerResultBox.css('border','1px solid rgb(0, 255, 115)');
 				
 			$('#detailSidoValue').val(city_value);
 			$('#detailGugunValue').val(gugun_value);
 			
 			console.log('data 값 : ' + data.resultCode);
-				var testObj = '<div>'
-				testObj += '총 ' + Object.keys(data.items.item).length + '건 <br>';
+
+				$('#innerResultTotalCount').html('<div>총 ' + Object.keys(data.items.item).length + '건 </div>');
 				
-				for(var i = 1; i < Object.keys(data.items.item).length; i++){
+				for(var i = 0; i < Object.keys(data.items.item).length; i++){
+
 					var testStr = JSON.stringify(data.items.item[i]);
 					var reverseTest = JSON.parse(testStr.replace(/ /gi, "").replace(/&quot;/g, '"'));
-					console.log('p값 확인 : '+ JSON.stringify(reverseTest));
 					
-					
-					testObj += '<span>'+(i)+'</span> &emsp;';
-					testObj += dateFormatter(data.items.item[i].occrrnc_dt) 
-					+ '&emsp; <a href="javascript:void(0)" onClick=accidentDetail('+JSON.stringify(reverseTest)+')>상세보기</a><br>';
+					var newTag = '<div class="gatherSources"> <span class="innerResultBoxNumbering">' + (i+1) + '</span>';
+
+					// var numberingTag = '<div>' + (i+1) + '</div>';
+					// innerResultBoxNumbering.append(numberingTag);
+
+					newTag += '<span class="innerResultBoxDate">' + dateFormatter(data.items.item[i].occrrnc_dt)  + '</span>';
+
+					// var dateTag = '<div>' + dateFormatter(data.items.item[i].occrrnc_dt)  + '</div>';
+					// innerResultBoxDate.append(dateTag);
+
+					newTag += '<a class="innerResultBoxDetail" href="javascript:void(0)" onClick=accidentDetail(' + 
+					JSON.stringify(reverseTest)  + ')> 상세보기 </a> </div> <br>';
+
+					// var detailTag = '<div> <a href="javascript:void(0)" onClick=accidentDetail(' + 
+					// JSON.stringify(reverseTest)  + ')> 상세보기 </a> </div>';
+					innerResultBox.append(newTag);
 				}
 
-				resultBox.append(testObj);
-			}
+			} /*success구문 끝*/
 		});
 		
 	});
