@@ -36,7 +36,7 @@
     </select>
     
     <select id="gugunFindByValue" resultType="org.go.traffic.model.GugunDTO">
-    	SELECT gugun_name FROM guguntbl WHERE gugun_value = #{gugun_value}
+    	SELECT gugun_name FROM gugunTBL WHERE gugun_value = #{gugun_value}
     </select>
 
     
