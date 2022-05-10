@@ -51,7 +51,37 @@
     <!-- <br><br><br><br><br><br><br>
     
     <a href="/admin/admin">관리자페이지</a> -->
+    <div class="tt">
+    [[${cctvurl}]]
+    </div>
+    <div>
+    <input type="text" id="reValue">
+    </div>
     
+<!--     <video autoplay controls poster="cctvsec.ktict.co.kr/1/jO7xDOfIltFX+rbamVONOj6nMLGVX48uzbVnsuG6Szo49gNgs/ugIJIGn485J8j0ss9DmRCBBpyoJ3+0ytyaCw==" 
+    src="blob:https://www.its.go.kr/c721b8df-51d5-4688-8088-eba188a02ebc" style="object-fit: fill;">
+    </video> -->
 
+	<video id="hlsPlayEx" controls width="352" height="198">
+	  <source type="application/x-mpegURL">
+	</video>
+<script type="text/javascript" src="js/video.min.js"></script>
+<script src="js/index.js"></script>
+<script th:inline="javascript">
+	var test = '[[${cctvurl}]]';
+	var test1 = test.replace('{"','');
+	var test2 = test1.replace('"}','');
+	var test3 = test2.replace('cctvurl":"','');
+	var test4 = $('#reValue').val(test3);
+	var result = test4.val();
+	
+	$('source').attr('src',result);
+	
+/* 	 var player = videojs('#hlsPlayEx');
+     player.play(); */
+     
+     
+
+</script>
 </body>
 </html>
