@@ -36,7 +36,7 @@ public class MainController {
 			List<Map<String, Object>> cctvnameList = new ArrayList<Map<String,Object>>();
 			List<Map<String, Object>> cctvurlList = new ArrayList<Map<String,Object>>();
 			
-			for(int i = 0; i < 1; i++) {
+			for(int i = 0; i < 20; i++) {
 				JSONObject test3 = (JSONObject) test2.get(i);
 				System.out.println("형식 : " + test3.get("cctvformat"));
 				cctvname.put("cctvname", test3.get("cctvname"));
