@@ -112,10 +112,18 @@ html, body{
     align-items: center;
 }
 
+
+
 .small_content0{
     border: 1px solid red;
     width: 95%;
     height: 95%;
+}
+
+.small_content0 video{
+	width: 100%;
+    height: 100%;
+	object-fit: fill;
 }
 
 .small_content1{

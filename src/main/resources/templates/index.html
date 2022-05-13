@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index_css.css">
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/0.5.14/hls.min.js"></script> -->
     <title>index</title>
 </head>
-<body onkeydown="return false" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <div class="wrapper">
@@ -29,7 +30,11 @@
 
                 <div class="leftContent">
                     <div class="smallContentWrapper0">
-                        <div class="small_content0">서울 CCTV</div>
+                        <div class="small_content0">
+                        
+                        		<video id="video" autoplay muted crossorigin="anonymous"></video>
+                        
+                        </div>
                     </div>
                 </div>
 
@@ -52,16 +57,15 @@
     <!-- <br><br><br><br><br><br><br>
     
     <a href="/admin/admin">관리자페이지</a> -->
-    <div class="tt">
-    [[${cctvurl}]]
-    </div>
-    <div>
-    <input type="text" id="reValue">
-    </div>
+
+    <input type="hidden" id="reValue">
+
     
 	
-<video id="video" autoplay controls crossorigin="anonymous"></video>
-<script type="text/javascript" src="js/video.min.js"></script>
+
+
+
+
 <script src="js/index.js"></script>
 
 <script th:inline="javascript">
@@ -72,25 +76,28 @@
 	var test3 = test2.replace('cctvurl":"','');
 	var test4 = $('#reValue').val(test3);
 	var result = test4.val();
-
+	
       var video = document.getElementById('video');
       var videoSrc = result;
-      //
-      // 우선 HLS를 지원하는지 체크
-      //
+      
+       //우선 HLS를 지원하는지 체크
       if (video.canPlayType('application/vnd.apple.mpegurl')) {
     	  console.log('1');
         video.src = videoSrc;
-      //
-      // HLS를 지원하지 않는다면 hls.js를 지원
-      //
+        
+      
+       //HLS를 지원하지 않는다면 hls.js를 지원
       } else if (Hls.isSupported()) {
     	  console.log('2');
         var hls = new Hls();
         hls.loadSource(videoSrc);
         hls.attachMedia(video);
       }
-
+      
+     
+      
+      
+      
     </script>
 </body>
 </html>
