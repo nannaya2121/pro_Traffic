@@ -1,9 +1,11 @@
 package org.go.traffic.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.go.traffic.api.CCTVAPI;
 import org.go.traffic.api.TrafficAPI;
 import org.go.traffic.model.AccidentDTO;
 import org.go.traffic.model.CityDTO;
@@ -11,6 +13,7 @@ import org.go.traffic.model.GugunDTO;
 import org.go.traffic.service.AccidentService;
 import org.go.traffic.service.CityService;
 import org.go.traffic.service.GugunService;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +24,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import lombok.extern.log4j.Log4j2;
+
 
 @Controller
 @RequestMapping("/traffic/*")
+@Log4j2
 public class TrafficController {
 	
 	@Autowired
@@ -34,6 +40,52 @@ public class TrafficController {
 	
 	@Autowired
 	private AccidentService accidentService;
+	
+	@GetMapping("/cctv")
+	public String cctvPage() {
+		
+		return "traffic/cctv";
+	}
+	
+	@PostMapping("/cctvInfo")
+	@ResponseBody
+	public List<Map<String, Object>> cctvInfo(){
+		List<Map<String, Object>> arrangeList = new ArrayList<>();
+		try {
+			JSONObject result = CCTVAPI.cctvCall();
+			JSONObject responseObj = (JSONObject) result.get("response");
+			JSONArray dataArray = (JSONArray) responseObj.get("data");
+			
+			for(int i = 0; i < dataArray.size(); i++) {
+				JSONObject dataObj = (JSONObject) dataArray.get(i);
+				String checkExLine = (String) dataObj.get("cctvname");
+				
+				if(checkExLine.contains("[경부선]")) {
+					Map<String, Object> arrangeMap = new HashMap<String, Object>();
+					String exLine = (String) dataObj.get("cctvname");
+					String cctvURL = (String) dataObj.get("cctvurl");
+					double latitude = (double) dataObj.get("coordy");
+					double longitude = (double) dataObj.get("coordx");
+					
+					arrangeMap.put("exLine", exLine);
+					arrangeMap.put("cctvURL", cctvURL);
+					arrangeMap.put("latitude", latitude);
+					arrangeMap.put("longitude", longitude);
+					
+					arrangeList.add(arrangeMap);
+				}
+			} 
+			
+			log.info("list 개수 : " + arrangeList.size());
+
+			return arrangeList;
+			
+		} catch (Exception e) {
+			log.error(e);
+		}
+		return arrangeList;
+		
+	}
 	
 	@GetMapping("/searchTraffic")
 	public String test(Model model) {
@@ -52,7 +104,7 @@ public class TrafficController {
     public List<GugunDTO> gugunSearchList(@RequestParam("city_value") String city_value, Model model){
     	
     	List<GugunDTO> gugunOneList = gugunService.gugunOneList(city_value);
-    	System.out.println(gugunOneList.toString());
+    	log.info("gugunOneList : "+gugunOneList.toString());
     	model.addAttribute("gugunOneList",gugunOneList);
     	return gugunOneList;
     }
@@ -66,10 +118,10 @@ public class TrafficController {
     	
     	try {
     		JSONObject result = TrafficAPI.apiCall(searchYear, city_value, gugun_value);
-    		System.out.println("result 값 확인 : " + result);
+    		log.info("moveData 값 확인 : " + result);
     		return result;
 		} catch (Exception e) {
-			e.printStackTrace(); 
+			log.error(e);
 		}
     	return null;
     }
@@ -82,13 +134,12 @@ public class TrafficController {
     	CityDTO cityName = cityService.cityFindByValue(detailSidoValue);
     	GugunDTO gugunName = gugunService.gugunFindByValue(detailGugunValue);
     	
-    	System.out.println("totalVal 값 확인 : " + totalVal);
+    	log.info("totalVal 값 확인 : " + totalVal);
     	
     	AccidentDTO dto = accidentService.tempSave(totalVal);
-    	System.out.println("DTO 값 확인 : " + dto.toString());
-    	
-    	System.out.println("cityName 값 : " + cityName);
-    	System.out.println("gugunName 값 : " + gugunName);
+    	log.info("DTO 값 확인 : " + dto.toString());
+    	log.info("cityName 값 : " + cityName);
+    	log.info("gugunName 값 : " + gugunName);
     	
     	Map<String, Object> names = new HashMap<>();
     	names.put("cityName", cityName.getCity_name());

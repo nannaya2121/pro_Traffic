@@ -9,10 +9,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
-
+@Slf4j
 public class TrafficAPI {
 	
 	public static JSONObject apiCall(String searchYear, String city_value, String gugun_value) throws IOException {
@@ -28,7 +30,7 @@ public class TrafficAPI {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
-        System.out.println("Response code: " + conn.getResponseCode());
+        log.debug("Accident API Response code: " + conn.getResponseCode());
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -42,7 +44,7 @@ public class TrafficAPI {
         }
         rd.close();
         conn.disconnect();
-        System.out.println(sb.toString());
+        log.debug("Accident api 호출 : " + sb.toString());
         
        String jsonStr=sb.toString();//sb는 StringBuilder 객체. API의response를 통해 값을 받은 상태. 
 		JSONParser parser = new JSONParser();
