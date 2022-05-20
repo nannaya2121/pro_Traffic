@@ -21,7 +21,7 @@ public class CCTVAPI {
 		  StringBuilder urlBuilder = new StringBuilder("https://openapi.its.go.kr:9443/cctvInfo"); /*URL*/
 		  urlBuilder.append("?" + URLEncoder.encode("apiKey", "UTF-8") + "=" + URLEncoder.encode("44f4eef6797d479f9a50e151ff333872", "UTF-8")); /*공개키*/
 		  urlBuilder.append("&" + URLEncoder.encode("type","UTF-8") + "=" + URLEncoder.encode("ex", "UTF-8")); /*도로유형*/
-		  urlBuilder.append("&" + URLEncoder.encode("cctvType","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*CCTV유형*/
+		  urlBuilder.append("&" + URLEncoder.encode("cctvType","UTF-8") + "=" + URLEncoder.encode("2", "UTF-8")); /*CCTV유형*/
 		  urlBuilder.append("&" + URLEncoder.encode("minX","UTF-8") + "=" + URLEncoder.encode("127.016256", "UTF-8")); /*최소경도영역*/
 		  urlBuilder.append("&" + URLEncoder.encode("maxX","UTF-8") + "=" + URLEncoder.encode("129.093443", "UTF-8")); /*최대경도영역*/
 		  urlBuilder.append("&" + URLEncoder.encode("minY","UTF-8") + "=" + URLEncoder.encode("35.242427", "UTF-8")); /*최소위도영역*/

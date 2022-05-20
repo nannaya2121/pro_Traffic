@@ -2,16 +2,17 @@ $(function(){
 		
 	const stationaryLatitude = 37.522610;
 	const stationaryLongitude = 127.016256;
-	var map = L.map('map').setView([stationaryLatitude, stationaryLongitude], 10);
+	
+		$('#test').click(function(){
+			var map = L.map('map').setView([stationaryLatitude, stationaryLongitude], 10);
 	
 			L.tileLayer('https://mt0.google.com/vt/lyrs=m&hl=kr&x={x}&y={y}&z={z}', {
 				attribution: '&copy; <a target="_blank" href="https://maps.google.com/maps?ll='
 				+stationaryLatitude +',' + stationaryLongitude +'&amp;z=15&amp;t=m&amp;hl=ko-KR&amp;gl=US&amp;mapclient=apiv3" title="Google 지도에서 이 지역을 보려면 클릭하세요." ><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false"></a>' //화면 오른쪽 하단 attributors
 			}).addTo(map);
-	
-		$('#test').click(function(){
 		
 		var video = document.getElementById('video');
+
 			$.ajax({
 				url: '/traffic/cctvInfo',
 				type: 'post',
@@ -47,8 +48,8 @@ $(function(){
 						
 					});
 					
-				}
-			});
+				} //Success 끝
+			}); //Ajax 끝
 		
 		});
 	
