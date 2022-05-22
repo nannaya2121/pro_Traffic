@@ -49,7 +49,10 @@ public class TrafficController {
 	
 	@PostMapping("/cctvInfo")
 	@ResponseBody
-	public List<Map<String, Object>> cctvInfo(){
+	public List<Map<String, Object>> cctvInfo(@RequestParam("lineInfo") String lineInfo){
+		
+		System.out.println("lineInfo : " + lineInfo);
+		
 		List<Map<String, Object>> arrangeList = new ArrayList<>();
 		try {
 			JSONObject result = CCTVAPI.cctvCall();
@@ -59,21 +62,61 @@ public class TrafficController {
 			for(int i = 0; i < dataArray.size(); i++) {
 				JSONObject dataObj = (JSONObject) dataArray.get(i);
 				String checkExLine = (String) dataObj.get("cctvname");
-				
-				if(checkExLine.contains("[경부선]")) {
-					Map<String, Object> arrangeMap = new HashMap<String, Object>();
-					String exLine = (String) dataObj.get("cctvname");
-					String cctvURL = (String) dataObj.get("cctvurl");
-					double latitude = (double) dataObj.get("coordy");
-					double longitude = (double) dataObj.get("coordx");
+
+				if(lineInfo.equals("kyeongbooLine")) {
 					
-					arrangeMap.put("exLine", exLine);
-					arrangeMap.put("cctvURL", cctvURL);
-					arrangeMap.put("latitude", latitude);
-					arrangeMap.put("longitude", longitude);
+					if(checkExLine.contains("[경부선]")) {
+						Map<String, Object> arrangeMap = new HashMap<String, Object>();
+						String exLine = (String) dataObj.get("cctvname");
+						String cctvURL = (String) dataObj.get("cctvurl");
+						double latitude = (double) dataObj.get("coordy");
+						double longitude = (double) dataObj.get("coordx");
+						
+						arrangeMap.put("exLine", exLine);
+						arrangeMap.put("cctvURL", cctvURL);
+						arrangeMap.put("latitude", latitude);
+						arrangeMap.put("longitude", longitude);
+						
+						arrangeList.add(arrangeMap);
+					}
 					
-					arrangeList.add(arrangeMap);
+				}else if(lineInfo.equals("joongbooLine")) {
+					
+					if(checkExLine.contains("[중부선]")) {
+						Map<String, Object> arrangeMap = new HashMap<String, Object>();
+						String exLine = (String) dataObj.get("cctvname");
+						String cctvURL = (String) dataObj.get("cctvurl");
+						double latitude = (double) dataObj.get("coordy");
+						double longitude = (double) dataObj.get("coordx");
+						
+						arrangeMap.put("exLine", exLine);
+						arrangeMap.put("cctvURL", cctvURL);
+						arrangeMap.put("latitude", latitude);
+						arrangeMap.put("longitude", longitude);
+						
+						arrangeList.add(arrangeMap);
+					}
+					
+				}else if(lineInfo.equals("honamLine")) {
+					
+					if(checkExLine.contains("[호남선]")) {
+						Map<String, Object> arrangeMap = new HashMap<String, Object>();
+						String exLine = (String) dataObj.get("cctvname");
+						String cctvURL = (String) dataObj.get("cctvurl");
+						double latitude = (double) dataObj.get("coordy");
+						double longitude = (double) dataObj.get("coordx");
+						
+						arrangeMap.put("exLine", exLine);
+						arrangeMap.put("cctvURL", cctvURL);
+						arrangeMap.put("latitude", latitude);
+						arrangeMap.put("longitude", longitude);
+						
+						arrangeList.add(arrangeMap);
+					}
+					
 				}
+				
+				
 			} 
 			
 			log.info("list 개수 : " + arrangeList.size());
