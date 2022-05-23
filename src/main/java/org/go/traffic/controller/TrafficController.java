@@ -114,8 +114,58 @@ public class TrafficController {
 						arrangeList.add(arrangeMap);
 					}
 					
+				}else if(lineInfo.equals("joongbooLine2")) {
+					
+					if(checkExLine.contains("[제2중부선]")) {
+						Map<String, Object> arrangeMap = new HashMap<String, Object>();
+						String exLine = (String) dataObj.get("cctvname");
+						String cctvURL = (String) dataObj.get("cctvurl");
+						double latitude = (double) dataObj.get("coordy");
+						double longitude = (double) dataObj.get("coordx");
+						
+						arrangeMap.put("exLine", exLine);
+						arrangeMap.put("cctvURL", cctvURL);
+						arrangeMap.put("latitude", latitude);
+						arrangeMap.put("longitude", longitude);
+						
+						arrangeList.add(arrangeMap);
+					}
+					
+				}else if(lineInfo.equals("daeguToBusanLine")) {
+					
+					if(checkExLine.contains("[대구부산선]")) {
+						Map<String, Object> arrangeMap = new HashMap<String, Object>();
+						String exLine = (String) dataObj.get("cctvname");
+						String cctvURL = (String) dataObj.get("cctvurl");
+						double latitude = (double) dataObj.get("coordy");
+						double longitude = (double) dataObj.get("coordx");
+						
+						arrangeMap.put("exLine", exLine);
+						arrangeMap.put("cctvURL", cctvURL);
+						arrangeMap.put("latitude", latitude);
+						arrangeMap.put("longitude", longitude);
+						
+						arrangeList.add(arrangeMap);
+					}
+					
+				}else if(lineInfo.equals("yellowSeaLine")) {
+					
+					if(checkExLine.contains("[서해안선]")) {
+						Map<String, Object> arrangeMap = new HashMap<String, Object>();
+						String exLine = (String) dataObj.get("cctvname");
+						String cctvURL = (String) dataObj.get("cctvurl");
+						double latitude = (double) dataObj.get("coordy");
+						double longitude = (double) dataObj.get("coordx");
+						
+						arrangeMap.put("exLine", exLine);
+						arrangeMap.put("cctvURL", cctvURL);
+						arrangeMap.put("latitude", latitude);
+						arrangeMap.put("longitude", longitude);
+						
+						arrangeList.add(arrangeMap);
+					}
+					
 				}
-				
 				
 			} 
 			

@@ -7,33 +7,42 @@
 <link rel="stylesheet" href="../css/accidentSearch_css.css">
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+		crossorigin="anonymous"></script>
 	<!-- test -->
 	<div class="wrapper">
 
-        <div class="main">
+		<div class="main">
 
-            <nav class="main_nav">
-                <div class="logoWrapper">
-                    <div><a class="logo" href="/">로고들어올자리</a></div>
-                </div>
-                <div class="navContentWrapper">
-                    <div><a class="cctv" href="#">CCTV 보러가기</a></div>
-                    <div><a class="accident" href="/traffic/searchTraffic">지역별 사고현황</a></div>
-                    <div><a class="notice" href="#">공지사항</a></div>
-                </div>
-            </nav>
+			<nav class="main_nav">
+				<div class="logoWrapper">
+					<div>
+						<a class="logo" href="/">로고들어올자리</a>
+					</div>
+				</div>
+				<div class="navContentWrapper">
+					<div>
+						<a class="cctv" href="/traffic/cctv">CCTV 보러가기</a>
+					</div>
+					<div>
+						<a class="accident" href="/traffic/searchTraffic">지역별 사고현황</a>
+					</div>
+					<div>
+						<a class="notice" href="#">공지사항</a>
+					</div>
+				</div>
+			</nav>
 
-			
-            
-            <div class="contentWrapper_accident">
+
+
+			<div class="contentWrapper_accident">
 				<div class="searchBox">
 
 					<div class="yearBox">
 
-						<div>조회연도</div><br>
-
-						<select id="searchYear"> 
+						<div>조회연도</div>
+						<br> <select id="searchYear">
 							<option value="-1">연도를 선택해주세요</option>
 							<option>2020</option>
 							<option>2019</option>
@@ -50,21 +59,19 @@
 
 					<div class="locationBox">
 
-						<div>조회 지역</div> <br>
-
-						<select id="city" onchange="changeCity(this.value);">
+						<div>조회 지역</div>
+						<br> <select id="city" onchange="changeCity(this.value);">
 							<option value="-1">도시를 선택해주세요</option>
 							<option th:each="cityList : ${cityList}" id="cityListValue"
-							th:value="${cityList.city_value}">[[${cityList.city_name}]]</option>
+								th:value="${cityList.city_value}">[[${cityList.city_name}]]</option>
 						</select>
 
 					</div>
 
 					<div class="innerlocationBox">
 
-						<div>상세지역</div><br>
-						 
-						<select id="gugun">
+						<div>상세지역</div>
+						<br> <select id="gugun">
 							<option value="-1">지역을 선택해주세요</option>
 						</select>
 
@@ -82,7 +89,8 @@
 
 					<div class="totalInnerResultBox">
 
-						<div class="innerResultTotalCount" id="innerResultTotalCount"></div> <br>
+						<div class="innerResultTotalCount" id="innerResultTotalCount"></div>
+						<br>
 						<div class="innerResultBox" id="innerResultBox">
 
 							<!-- <div class="innerResultBoxNumbering" id="innerResultBoxNumbering"></div>
@@ -92,24 +100,25 @@
 						</div>
 
 					</div>
-	
+
 				</div>
 
-        	</div>
+			</div>
 
-			
-			
-			
-        <div class="footer"></div>
 
-    </div>
 
-	<form action="/traffic/accidentDetail" method="post" id="trafficDetailForm">
-		<input type="hidden" name="detailSidoValue" id="detailSidoValue">
-		<input type="hidden" name="detailGugunValue" id="detailGugunValue">
-		<input type="hidden" name="totalVal" id="totalVal">
-	</form>
 
-<script src="../js/searchTraffic.js"></script>
+			<div class="footer"></div>
+
+		</div>
+	</div>
+		<form action="/traffic/accidentDetail" method="post"
+			id="trafficDetailForm">
+			<input type="hidden" name="detailSidoValue" id="detailSidoValue">
+			<input type="hidden" name="detailGugunValue" id="detailGugunValue">
+			<input type="hidden" name="totalVal" id="totalVal">
+		</form>
+
+		<script src="../js/searchTraffic.js"></script>
 </body>
 </html>

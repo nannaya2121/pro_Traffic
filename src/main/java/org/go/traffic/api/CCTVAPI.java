@@ -22,9 +22,9 @@ public class CCTVAPI {
 		  urlBuilder.append("?" + URLEncoder.encode("apiKey", "UTF-8") + "=" + URLEncoder.encode("44f4eef6797d479f9a50e151ff333872", "UTF-8")); /*공개키*/
 		  urlBuilder.append("&" + URLEncoder.encode("type","UTF-8") + "=" + URLEncoder.encode("ex", "UTF-8")); /*도로유형*/
 		  urlBuilder.append("&" + URLEncoder.encode("cctvType","UTF-8") + "=" + URLEncoder.encode("2", "UTF-8")); /*CCTV유형*/
-		  urlBuilder.append("&" + URLEncoder.encode("minX","UTF-8") + "=" + URLEncoder.encode("127.016256", "UTF-8")); /*최소경도영역*/
+		  urlBuilder.append("&" + URLEncoder.encode("minX","UTF-8") + "=" + URLEncoder.encode("126.104734", "UTF-8")); /*최소경도영역*/
 		  urlBuilder.append("&" + URLEncoder.encode("maxX","UTF-8") + "=" + URLEncoder.encode("129.093443", "UTF-8")); /*최대경도영역*/
-		  urlBuilder.append("&" + URLEncoder.encode("minY","UTF-8") + "=" + URLEncoder.encode("35.242427", "UTF-8")); /*최소위도영역*/
+		  urlBuilder.append("&" + URLEncoder.encode("minY","UTF-8") + "=" + URLEncoder.encode("34.388210", "UTF-8")); /*최소위도영역*/
 		  urlBuilder.append("&" + URLEncoder.encode("maxY","UTF-8") + "=" + URLEncoder.encode("37.522610", "UTF-8")); /*최대위도영역*/
 		  urlBuilder.append("&" + URLEncoder.encode("getType","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*출력타입*/
 		  URL url = new URL(urlBuilder.toString());
