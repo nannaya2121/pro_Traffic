@@ -15,7 +15,7 @@ html, body{
 .wrapper{
     background-image: url('../images/indexBackground2.jpg');
     width: 100%;
-    height: 800px;
+    height: 1200px;
     background-repeat : no-repeat;
     background-size : cover;
 }
@@ -72,75 +72,7 @@ html, body{
     display: flex;
 }
 
-.leftContent{
-    width: 50%;
-}
-
-.rightContent{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 50%;
-}
-
-.smallContentWrapper0{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.smallContentWrapper1{
-    display: flex;
-    width: 100%;
-    height: 50%;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.smallContentWrapper2{
-    display: flex;
-    width: 100%;
-    height: 50%;
-    justify-content: space-around;
-    align-items: center;
-}
-
-
-
-.small_content0{
-    width: 95%;
-    height: 95%;
-}
-
-.small_content0 video{
-	width: 100%;
-    height: 100%;
-	object-fit: fill;
-}
-
-.small_content1{
-    width: 45%;
-    height: 90%;
-}
-
-.small_content2{
-    width: 45%;
-    height: 90%;
-}
-
-.small_content3{
-    width: 45%;
-    height: 90%;
-}
-
-.small_content4{
-    width: 45%;
-    height: 90%;
-}
-
 .footer{
     height: 10%;
 }
+
