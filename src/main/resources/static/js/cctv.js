@@ -3,31 +3,37 @@ var lineInfo;
 $(function(){
 	
 		$('#kyeongbooLine').click(function(){
+			alert('확인을 누르시고 잠시만 기다리시면 지도가 나타납니다.');
 			lineInfo = 'kyeongbooLine';
 			ajaxFunc();		
 		});
 		
 		$('#joongbooLine').click(function(){
+			alert('확인을 누르시고 잠시만 기다리시면 지도가 나타납니다.');
 			lineInfo = 'joongbooLine';
 			ajaxFunc();		
 		});
 		
 		$('#honamLine').click(function(){
+			alert('확인을 누르시고 잠시만 기다리시면 지도가 나타납니다.');
 			lineInfo = 'honamLine';
 			ajaxFunc();		
 		});
 		
 		$('#joongbooLine2').click(function(){
+			alert('확인을 누르시고 잠시만 기다리시면 지도가 나타납니다.');
 			lineInfo = 'joongbooLine2';
 			ajaxFunc();		
 		});
 		
 		$('#daeguToBusanLine').click(function(){
+			alert('확인을 누르시고 잠시만 기다리시면 지도가 나타납니다.');
 			lineInfo = 'daeguToBusanLine';
 			ajaxFunc();		
 		});
 		
 		$('#yellowSeaLine').click(function(){
+			alert('확인을 누르시고 잠시만 기다리시면 지도가 나타납니다.');
 			lineInfo = 'yellowSeaLine';
 			ajaxFunc();		
 		});

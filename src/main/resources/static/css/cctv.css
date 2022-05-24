@@ -1,12 +1,10 @@
 .contentWrapper_cctv{
-	border: 3px solid yellow;
 	display: flex;
 	justify-content: center;
 	
 }
 
 #mapLocation {
-	border: 1px solid greenyellow;
 	width : 500px;
 	height: 650px;
 	margin-left: 1%;
@@ -14,14 +12,12 @@
 
 
 .cctvView{
-	border: 1px solid red;
 	width: 600px;
 	height: 650px;
 	margin-left: 1%;
 }
 
 .lineBtns{
-	border: 1px solid white;
 	width: 300px;
 	display: flex;
 	justify-content: center;

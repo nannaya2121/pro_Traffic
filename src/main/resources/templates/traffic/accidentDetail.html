@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+ 	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index_css.css">
 	<link rel="stylesheet" href="../css/leafletMine.css">
+	<link rel="stylesheet" href="../css/accidentDetail.css">
 	<!-- Leaflet CSS -->
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
 	integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
@@ -16,27 +21,73 @@
 <body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
-<input id="accidentDate" type="hidden" th:value="${dto.accidentDate}">
-<input id="dayOfWeek" type="hidden" th:value="${dto.dayOfWeek}">
 
-<a href="/">홈으로</a><a href="/traffic/searchTraffic">다른 지역 검색</a><br>
-<input id="latitude" type="hidden" th:value="${dto.latitude}">
-<input id="longitude" type="hidden" th:value="${dto.longitude}">
 
-[[${sidoGugunName.cityName}]] 
-[[${sidoGugunName.gugunName}]]<br>
+<div class="wrapper">
 
-날짜 : <span id="resultDate"></span><br>
-요일 : <span id="resultDayOfWeek"></span><br>
-가해자 위반 내용 : [[${dto.violationName}]]<br>
-사망자 수 : [[${dto.deathCount}]]<br>
-부상자 수 : [[${dto.injureCount}]]<br>
+        <div class="main">
+            <nav class="main_nav">
+                <div class="logoWrapper">
+                    <div><a class="logo" href="/">로고들어올자리</a></div>
+                </div>
+                <div class="navContentWrapper">
+                    <div><a class="cctv" href="/traffic/cctv">CCTV 보러가기</a></div>
+                    <div><a class="accident" href="/traffic/searchTraffic">지역별 사고현황</a></div>
+                    <div><a class="notice" href="#">공지사항</a></div>
+                </div>
+            </nav>
+            
+            <div class="contentWrapper_accident">
+            <div class="contentInnerWrapper_accident">
+            		<div class="mapLocation">
+	            		<div id="map" style="width: 500px; height: 500px;"></div>
+					</div>
+					
+					<div class="info_content">
+					
+						<input id="accidentDate" type="hidden" th:value="${dto.accidentDate}">
+						<input id="dayOfWeek" type="hidden" th:value="${dto.dayOfWeek}">
+						
+						
+						<input id="latitude" type="hidden" th:value="${dto.latitude}">
+						<input id="longitude" type="hidden" th:value="${dto.longitude}">
+						
+						<h2>사고지역</h2>
+						&ensp;- [[${sidoGugunName.cityName}]] 
+						[[${sidoGugunName.gugunName}]]
+						
+						<h2>날짜</h2>
+						&ensp;- <span id="resultDate"></span>&ensp;<span id="resultDayOfWeek"></span>
+						
+						<h2>가해자 위반 내용</h2>
+						&ensp;- [[${dto.violationName}]]
+						
+						<h2>사망자 및 부상자 수</h2>
+						&ensp;- 사망자 수 : [[${dto.deathCount}]]<br>
+						&ensp;- 부상자 수 : [[${dto.injureCount}]]<br>
+					
+					</div>
 
-<div id="map"></div>
+
+            </div>
+			</div>
+        </div>
+        <div class="footer"></div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 <script src="../js/accidentDetail.js"></script>
-<script th:inline="javascript">
-		
-</script>
+<script src="../js/index.js"></script>
 </body>
 </html>

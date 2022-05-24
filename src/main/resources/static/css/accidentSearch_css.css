@@ -1,5 +1,4 @@
 .contentWrapper_accident{
-    border: 1px solid red;
     height: 90%;
     display: flex;
     justify-content: center;
@@ -29,7 +28,6 @@
 }
 
 .yearBox{
-    border: 1px solid white;
     width: 25%;
     height: 90%;
     display: flex;
@@ -39,7 +37,6 @@
 }
 
 .locationBox{
-    border: 1px solid white;
     width: 25%;
     height: 90%;
     display: flex;
@@ -49,7 +46,6 @@
 }
 
 .innerlocationBox{
-    border: 1px solid white;
     width: 25%;
     height: 90%;
     display: flex;
@@ -59,7 +55,6 @@
 }
 
 .buttonBox{
-    border: 1px solid white;
     width: 15%;
     height: 90%;
     display: flex;
