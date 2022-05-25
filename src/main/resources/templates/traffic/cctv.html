@@ -22,14 +22,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 
-
-
 <div class="wrapper">
 
         <div class="main">
             <nav class="main_nav">
                 <div class="logoWrapper">
-                    <div><a class="logo" href="/">로고들어올자리</a></div>
+                    <div class="logo">
+                    		<a href="/">
+                    			<img width="100%" src="../images/logo.gif">
+                    		</a>
+                    	</div>
                 </div>
                 <div class="navContentWrapper">
                     <div><a class="cctv" href="/traffic/cctv">CCTV 보러가기</a></div>
@@ -41,17 +43,61 @@
             <div class="contentWrapper_cctv">
 
 					<div class="lineBtns">
-						<button class="lineBtn" id="kyeongbooLine">경부고속도로</button>
-						<button class="lineBtn" id="joongbooLine">중부고속도로</button>
-						<button class="lineBtn" id="honamLine">호남고속도로</button>
-						<button class="lineBtn" id="joongbooLine2">제2중부고속도로</button>
-						<button class="lineBtn" id="daeguToBusanLine">대구부산고속도로</button>
-						<button class="lineBtn" id="yellowSeaLine">서해안고속도로</button>
+						<a href="#" class="lineTag" id="kyeongbooLine">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        경부고속도로
+					    </a>
+					    
+					    <a href="#" class="lineTag" id="joongbooLine">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        중부고속도로
+					    </a>
+					    
+					    <a href="#" class="lineTag" id="honamLine">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        호남고속도로
+					    </a>
+					    
+					    <a href="#" class="lineTag" id="joongbooLine2">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        제2중부고속도로
+					    </a>
+					    
+					    <a href="#" class="lineTag" id="daeguToBusanLine">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        대구부산고속도로
+					    </a>
+					    
+					    <a href="#" class="lineTag" id="yellowSeaLine">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        서해안고속도로
+					    </a>
+					    
 					</div>
 				
 				
 					<div id="mapLocation">
+					
 						<!-- <div id="map"></div> -->
+						
 					</div>
 					
 					<div class="cctvView" id="cctvView">
@@ -62,18 +108,22 @@
             </div>
 
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+        	
+        		<span>&#169;</span>2022 <br>
+        	
+			This Web page is a service for watching CCTV on South Korean highways 
+			and searching traffic accident records in South KOREA. <br>
+			Developer's E-mail : nannaya2121 @ hanmail.net <br>
+			If you have a question, Please send E-mail to Developer.
+        	
+        </div>
 
     </div>
 
 
-
-
-
-
-
-
 	
 <script src="../js/cctv.js"></script>
+<script src="../js/index.js"></script>
 </body>
 </html>

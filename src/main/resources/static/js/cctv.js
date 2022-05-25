@@ -53,9 +53,8 @@ function ajaxFunc(){
 				data : {lineInfo : lineInfo},
 				success: function(result) {
 					lineInfo = '';
-					
 					var map = L.map('map').setView([result[0].latitude, result[0].longitude], 10);
-
+					
 					L.tileLayer('https://mt0.google.com/vt/lyrs=m&hl=kr&x={x}&y={y}&z={z}', {
 						attribution: '&copy; <a target="_blank" href="https://maps.google.com/maps?ll='
 						+result[0].latitude +',' + result[0].longitude +'&amp;z=15&amp;t=m&amp;hl=ko-KR&amp;gl=US&amp;mapclient=apiv3" title="Google 지도에서 이 지역을 보려면 클릭하세요." ><img alt="" src="https://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false"></a>' //화면 오른쪽 하단 attributors

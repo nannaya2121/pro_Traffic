@@ -13,15 +13,15 @@ html, body{
 }
 
 .wrapper{
-    background-image: url('../images/indexBackground2.jpg');
+    background-image: url('../images/backgroundIMG.jpg');
     width: 100%;
-    height: 1200px;
+    height: 1020px;
     background-repeat : no-repeat;
     background-size : cover;
 }
 
 .main{
-    height: 90%;
+    height: 80%;
 }
 
 .main_nav{
@@ -37,8 +37,9 @@ html, body{
 }
 
 .logo{
-    color: white;
-    text-decoration: none;
+	width: 100px;
+	height: 100px;
+	margin-top: 30px;
 }
 
 .navContentWrapper{
@@ -53,18 +54,22 @@ html, body{
 .navContentWrapper div a{
     color: whitesmoke;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .cctv:hover{
     color: rgb(2, 150, 255);
+    background-color: whitesmoke;
 }
 
 .accident:hover{
     color: red;
+    background-color: whitesmoke;
 }
 
 .notice:hover{
     color: rgb(255, 183, 0);
+    background-color: whitesmoke;
 }
 
 .contentWrapper{
@@ -73,6 +78,10 @@ html, body{
 }
 
 .footer{
-    height: 10%;
+	align-items: center;
+	border-top: 2px dashed white;
+    height: 20%;
+    font-size: 20px;
+    text-align: center;
 }
 

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Search Accident</title>
 <link rel="stylesheet" href="../css/index_css.css">
+<link rel="stylesheet" href="../css/cctv.css">
 <link rel="stylesheet" href="../css/accidentSearch_css.css">
 </head>
 <body>
@@ -17,9 +18,11 @@
 
 			<nav class="main_nav">
 				<div class="logoWrapper">
-					<div>
-						<a class="logo" href="/">로고들어올자리</a>
-					</div>
+					<div class="logo">
+                    		<a href="/">
+                    			<img width="100%" src="../images/logo.gif">
+                    		</a>
+                    	</div>
 				</div>
 				<div class="navContentWrapper">
 					<div>
@@ -78,8 +81,14 @@
 					</div>
 
 					<div class="buttonBox">
-
-						<button class="searchBtn" id="searchBtn">검색하기</button>
+					
+						<a href="#" class="lineTag searchBtn" id="searchBtn">
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        <span></span>
+					        검색하기
+					    </a>
 
 					</div>
 
@@ -108,7 +117,14 @@
 
 
 
-			<div class="footer"></div>
+			<div class="footer">
+				<span>&#169;</span>2022 <br>
+        	
+			This Web page is a service for watching CCTV on South Korean highways 
+			and searching traffic accident records in South KOREA. <br>
+			Developer's E-mail : nannaya2121 @ hanmail.net <br>
+			If you have a question, Please send E-mail to Developer.
+			</div>
 
 		</div>
 	</div>
@@ -120,5 +136,6 @@
 		</form>
 
 		<script src="../js/searchTraffic.js"></script>
+		<script src="../js/index.js"></script>
 </body>
 </html>
