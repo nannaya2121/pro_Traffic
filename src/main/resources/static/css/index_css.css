@@ -85,3 +85,20 @@ html, body{
     text-align: center;
 }
 
+.conBox{
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.leftCon{
+	width: 99%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 3rem;
+}
+
+
