@@ -14,4 +14,6 @@
 4. You can see web.
 ![스크린샷, 2022-05-30 10-13-34](https://user-images.githubusercontent.com/69185387/170900426-23dad554-eff7-4bf9-953e-4f9aa3ec083d.png)
 
+you can download dataset. 
+Change extension from 'txt' to 'sql'  ⇩ ⇩ ⇩
 [pro_Traffic_DB.txt](https://github.com/nannaya2121/pro_Traffic/files/8794743/pro_Traffic_DB.txt)
