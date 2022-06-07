@@ -46,6 +46,8 @@ function ajaxFunc(){
 	
 	$('#mapLocation').html('');
 	$('#mapLocation').html('<div id="map"></div>');
+	$('#cctvView').html('');
+	$('#cctvView').html('<video id="video" width="100%" height="100%" autoplay muted crossorigin="anonymous"></video>');
 					
 			$.ajax({
 				url: '/traffic/cctvInfo',
